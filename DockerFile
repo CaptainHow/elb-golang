@@ -1,0 +1,14 @@
+FROM golang:1.23.0-alpine
+
+WORKDIR /app
+
+COPY goapp/go.* ./
+
+ENV GO111MODULE=on
+RUN go mod download
+
+COPY goapp/*.go ./
+
+RUN go build -o /goapp
+
+ENTRYPOINT ["/goapp"]
