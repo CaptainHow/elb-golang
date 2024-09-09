@@ -11,4 +11,4 @@ COPY goapp/*.go ./
 
 RUN go build -o /goapp
 
-ENTRYPOINT ["/goapp"]
+ENTRYPOINT ["./goapp"]

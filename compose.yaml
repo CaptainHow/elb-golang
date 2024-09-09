@@ -1,0 +1,35 @@
+version: "3.8" # Ensure you use a version that supports networks
+
+services:
+  elb:
+    image: haproxy
+    ports:
+      - "8100:8100"
+    volumes:
+      - ./haproxy:/usr/local/etc/haproxy
+    # networks:
+    #   - my-network
+
+  goapp1:
+    image: goapp
+    environment:
+      - APPPORT=8081
+    # networks:
+    #   - my-network
+
+  goapp2:
+    image: goapp
+    environment:
+      - APPPORT=8082
+    # networks:
+    #   - my-network
+
+  goapp3:
+    image: goapp
+    environment:
+      - APPPORT=8083
+    # networks:
+    #   - my-network
+# networks:
+#   my-network:
+#     driver: bridge
